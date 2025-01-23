@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Public Transport Scheduling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #5cb85c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #4cae4c;
+        }
+        #results {
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+<h1>Public Transport Scheduling System</h1>
+<form id="scheduleForm">
+    <label for="startStop">Enter Starting Stop (0 to 9):</label>
+    <input type="number" id="startStop" min="0" max="9" required>
+    <input type="submit" value="Find Shortest Path">
+</form>
+
+<div id="results"></div>
+
+<script>
+    document.getElementById('scheduleForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const startStop = document.getElementById('startStop').value;
+        
+        // Simulate a call to the backend
+        const mockResponse = {
+            "0": 0,
+            "1": 1,
+            "2": 4,
+            "3": 3,
+            "4": 7,
+            "5": 5,
+            "6": 6,
+            "7": 10,
+            "8": 15,
+            "9": 17,
+        };
+
+        let resultHtml = "<h3>Distance from Starting Stop:</h3><ul>";
+        for (let i = 0; i <= 9; i++) {
+            resultHtml += `<li>Stop ${i}: ${mockResponse[i]} units</li>`;
+        }
+        resultHtml += "</ul>";
+        document.getElementById('results').innerHTML = resultHtml;
+    });
+</script>
+
+</body>
+</html>
